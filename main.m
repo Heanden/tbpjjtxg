@@ -1,31 +1,31 @@
 clc; clear; close all;
 
 %%%%%%%%%%×Ö·û¿â%%%%%%%%%%%%%%%%%
-lk0 = imread('D:\desktop\pic\0.png'); 
-lk1 = imread('D:\desktop\pic\1.png'); 
-lk2 = imread('D:\desktop\pic\2.png'); 
-lk3 = imread('D:\desktop\pic\3.png'); 
-lk4 = imread('D:\desktop\pic\4.png'); 
-lk5 = imread('D:\desktop\pic\5.png'); 
-%lk6 = imread('D:\desktop\pic\6.png'); 
-lk7 = imread('D:\desktop\pic\7.png'); 
-%lk8 = imread('D:\desktop\pic\8.png'); 
-lk9 = imread('D:\desktop\pic\9.png'); 
+lk0 = imread('D:\desktop\pic\0.png');
+lk1 = imread('D:\desktop\pic\1.png');
+lk2 = imread('D:\desktop\pic\2.png');
+lk3 = imread('D:\desktop\pic\3.png');
+lk4 = imread('D:\desktop\pic\4.png');
+lk5 = imread('D:\desktop\pic\5.png');
+%lk6 = imread('D:\desktop\pic\6.png');
+lk7 = imread('D:\desktop\pic\7.png');
+%lk8 = imread('D:\desktop\pic\8.png');
+lk9 = imread('D:\desktop\pic\9.png');
 %%%%%%%%%%×Ö·û¿â%%%%%%%%%%%%%%%%%
 
-s = imread('D:\desktop\pic\qx (3).png'); %??????
-[x, y, z] = size(s); %??????
+s = imread('D:\desktop\pic\qx (3).png');
+[x, y, z] = size(s);
 
-%x=round(x/y*1080);%?????????????????
+%x=round(x/y*1080);
 %y=1080;
 
-%s=imresize(s,[x y]);%????
+%s=imresize(s,[x y]);
 
 if s(x, y, 1) > 256 || s(x, y, 2) > 256 || s(x, y, 3) > 256
     s = uint8(double(s) / 65535 * 255);
-    end%????????unit16
+    end
     sf = s;
-    bw = zeros(x, y); %????????
+    bw = zeros(x, y);
     bw2 = bw;
 
     for i = 2:x
@@ -132,7 +132,7 @@ if s(x, y, 1) > 256 || s(x, y, 2) > 256 || s(x, y, 3) > 256
     ccc = round((lecmax - lecmin) / 12);
     kkk = round((lekmax - lekmin) / 16);
     ccn = round(2 * ccc *06);
-    kkn=round(2*kkk*0.13333);
+    kkn = round(2 * kkk * 0.13333);
     cenco = 1;
 
     for i = 1:le
@@ -145,7 +145,6 @@ if s(x, y, 1) > 256 || s(x, y, 2) > 256 || s(x, y, 3) > 256
         cen(cenco, 3) = cenco;
         cenco = cenco + 1;
     end
-
     %{
     nuloc = 1;
 
@@ -186,14 +185,7 @@ if s(x, y, 1) > 256 || s(x, y, 2) > 256 || s(x, y, 3) > 256
         sf(fen(team, 2), fen(team, 1), :) = 255;
     end
 
-    %{
-    plot(loc(:, 1), loc(:, 2), 'ko');
-    hold on;
-    plot(cen(:, 1), cen(:, 2), 'ro');
-    hold on;
-    plot(fen(:, 1), fen(:, 2), 'go');
-    hold on;
-    %}
+    
 
     imshow(bw3);
     imwrite(bw3, 'D:\desktop\pic\f3.png');
