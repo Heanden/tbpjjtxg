@@ -1,20 +1,20 @@
 clc; clear; close all;
 
 %%%%%%%%%%?????%%%%%%%%%%%%%%%%%
-lk0 = imread('D:\desktop\pic\0.png');
-lk1 = imread('D:\desktop\pic\1.png');
-lk2 = imread('D:\desktop\pic\2.png');
-lk3 = imread('D:\desktop\pic\3.png');
-lk4 = imread('D:\desktop\pic\4.png');
-lk5 = imread('D:\desktop\pic\5.png');
-lk6 = imread('D:\desktop\pic\6.png');
-lk7 = imread('D:\desktop\pic\7.png');
-lk8 = imread('D:\desktop\pic\8.png');
-lk9 = imread('D:\desktop\pic\9.png');
+lk0 = imread('\pic\0.png');
+lk1 = imread('\pic\1.png');
+lk2 = imread('\pic\2.png');
+lk3 = imread('\pic\3.png');
+lk4 = imread('\pic\4.png');
+lk5 = imread('\pic\5.png');
+lk6 = imread('\pic\6.png');
+lk7 = imread('\pic\7.png');
+lk8 = imread('\pic\8.png');
+lk9 = imread('\pic\9.png');
 %%%%%%%%%%?????%%%%%%%%%%%%%%%%%
 
-s = imread('D:\desktop\pic\qx (4).png');
-mulu = imread('D:\desktop\pic\mulu.png');
+s = imread('\pic\qx (4).png');
+mulu = imread('\pic\mulu.png');
 [x, y, z] = size(s);
 
 %x=round(x/y*1080);
@@ -200,7 +200,7 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for i=1:100
-    imshow(mulu);
+    %imshow(mulu);
     muluc=input('请输入要调整的区块：');
     if muluc<1 || muluc==5 || muluc==10 || muluc==15 || muluc>20
         fprintf("错误！")
@@ -212,12 +212,12 @@ for i=1:100
         ccn=ccn/2;
         
         for ij = 1:le
-            cnen(cencco, 1) = loc(i, 1) + kk + kkn;
-            cnen(cencco, 2) = loc(i, 2) + cc - 2 + ccn;
+            cnen(cencco, 1) = loc(ij, 1) + kk + kkn;
+            cnen(cencco, 2) = loc(ij, 2) + cc - 4 + ccn;
             cnen(cencco, 3) = cencco;
             cencco = cencco + 1;
-            cnen(cencco, 1) = loc(i, 1) + kk - kkn;
-            cnen(cencco, 2) = loc(i, 2) + cc - 2 - ccn;
+            cnen(cencco, 1) = loc(ij, 1) + kk - kkn+1;
+            cnen(cencco, 2) = loc(ij, 2) + cc - 4 - ccn+1;
             cnen(cencco, 3) = cencco;
             cencco = cencco + 1;
         end
@@ -240,23 +240,23 @@ for i=1:100
             end
         end
         for ii=1:sizecfnum
-            if cfstr(ii) == 1
+            if cfstr(ii) == '1'
                 llkk = lk1;
-            elseif cfstr(ii) == 2
+            elseif cfstr(ii) == '2'
                 llkk = lk2;
-            elseif cfstr(ii) == 3
+            elseif cfstr(ii) == '3'
                 llkk = lk3;
-            elseif cfstr(ii) == 4
+            elseif cfstr(ii) == '4'
                 llkk = lk4;
-            elseif cfstr(ii) == 5
+            elseif cfstr(ii) == '5'
                 llkk = lk5;
-            elseif cfstr(ii) == 6
+            elseif cfstr(ii) == '6'
                 llkk = lk6;
-            elseif cfstr(ii) == 7
+            elseif cfstr(ii) == '7'
                 llkk = lk7;
-            elseif cfstr(ii) == 8
+            elseif cfstr(ii) == '8'
                 llkk = lk8;
-            elseif cfstr(ii) == 9
+            elseif cfstr(ii) == '9'
                 llkk = lk9;
             else
                 llkk = lk0;
@@ -264,10 +264,10 @@ for i=1:100
             
             for team = 1:size(fnen)
                 if fnen(team, 3)==muluc
-                    if team-(muluc-1)*63-floor(team/ccn/2)*ccn*2 == 0
-                        sf(fnen(team, 2), fnen(team, 1)+(ii-1)*kkn*2/sizecfnum, :) = llkk((team-(muluc-1)*63)/ccn/2,ceil((team-(muluc-1)*63)/ccn/2), :);
+                    if team-(muluc-1)*48-floor((team-(muluc-1)*48)/ccn/2)*ccn*2 == 0
+                        sf(fnen(team, 2), fnen(team, 1)+(ii-1)*kkn*2/sizecfnum, :) = llkk((team-(muluc-1)*48)/ccn/2,ceil((team-(muluc-1)*48)/ccn/2), :);
                     else
-                        sf(fnen(team, 2), fnen(team, 1)+(ii-1)*kkn*2/sizecfnum, :) = llkk((team-(muluc-1)*63)-floor((team-(muluc-1)*63)/ccn/2)*ccn*2,ceil((team-(muluc-1)*63)/ccn/2), :);
+                        sf(fnen(team, 2), fnen(team, 1)+(ii-1)*kkn*2/sizecfnum, :) = llkk((team-(muluc-1)*48)-floor((team-(muluc-1)*48)/ccn/2)*ccn*2,ceil((team-(muluc-1)*48)/ccn/2), :);
                     end
                 end
             end
@@ -286,5 +286,5 @@ end
 
 %imshow(bw3);
 %imwrite(bw3, 'D:\desktop\pic\f3.png');
-imwrite(sf, 'D:\desktop\pic\sf.jpg');
+imwrite(sf, '\pic\sf.jpg');
 %imwrite(bw, 'D:\desktop\pic\f.jpg');
